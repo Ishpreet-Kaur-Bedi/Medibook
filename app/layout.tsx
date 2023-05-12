@@ -3,7 +3,8 @@
  import './globals.css'
 import { Inter } from 'next/font/google'
 import Navbar from './components/Navbar/Navbar'
-
+import ClientOnly from './components/ClientOnly'
+import Modal from './components/modals/Modal'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -23,8 +24,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
 
-        
-        <Navbar/>
+      <ClientOnly>
+        <Modal actionLabel='Submit' title='hello' isOpen/>
+
+      <Navbar/>
+      </ClientOnly>
+       
 
 
         {children}</body>
