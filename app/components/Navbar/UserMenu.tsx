@@ -3,6 +3,7 @@ import {AiOutlineMenu} from 'react-icons/ai'
 import Avatar from '../Avatar';
 import { use, useCallback, useState } from 'react';
 import MenuItem from './MenuItem';
+import useRegisterModal from '@/app/hooks/useRegisterModal';
 //this will show the user menu
 //use state hook allows us to track state in a function component 
 // useState accepts an initial state and returns two values:
@@ -11,6 +12,9 @@ import MenuItem from './MenuItem';
 // A function that updates the state.
 
 const UserMenu = () => {
+
+  const registerModal =useRegisterModal();
+
   const[isopen,setIsOpen] = useState(false);
 //callback hooks 
 const toggleOpen = useCallback(()=>{
@@ -84,7 +88,7 @@ cursor-pointer'>
   label='Login'
   />
    <MenuItem
-  onClick={()=>{}}
+  onClick={registerModal.onOpen}
   label='Sign Up'
   />
 

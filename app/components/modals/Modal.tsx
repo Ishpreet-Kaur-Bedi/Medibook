@@ -40,7 +40,7 @@ const Modal: React.FC<ModalProps> = ({
     setTimeout(() => {
       onClose();
     }, 300);
-  }, [disabled, onClose]);
+  }, [ onClose , disabled ]);
 
   const handleSubmit = useCallback(() => {
     if (disabled) {
@@ -54,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({
       return;
     }
     secondryAction();
-  }, [disabled, secondryAction]);
+  }, [ secondryAction ,disabled]);
 
   if (!isOpen) {
     return null;
@@ -85,7 +85,10 @@ bg-neutral-800/70
     lg:w-3/6
     xl:w-2/5
     my-6
+   
     mx-auto
+
+    h-full 
     lg:h-auto
     md:h-auto
 
@@ -137,7 +140,9 @@ bg-neutral-800/70
                 hover:opacity-70
                 transition
                 absolute
-                left-9">
+                left-9"
+                // onclick={handleClose}
+                >
                     <IoMdClose size = {18}/>
                     </button>
                     <div className="text-lg
@@ -164,7 +169,7 @@ w-full
 
   
    <Button
-   outline
+   
     disabled={disabled}
   label={secondryActionLabel}
   onClick={handleSecondaryAction}  />
@@ -174,6 +179,9 @@ w-full
   label={actionLabel}
   onClick={handleSubmit}  />
 </div>
+
+{footer}
+
 </div>
               {/* more inside of contentdiv  */}
             </div>
