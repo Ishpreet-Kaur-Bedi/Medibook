@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// now we will create different modals 
+// first will be user modal
+
+// we have to map this id to specific type of id thaa mongo db uses  we have to map our object id 
+
+//@unique will ensure that the emails are not unique  
+//email has qustion mark because it is not necessary 
+//hashed password is optional because we will be using social media handles
+
+model User {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  image          String?
+  hashedPassword String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  favoriteIds    String[]  @db.ObjectId
+
+  // defining relations
+
+  accounts     Account[]
+  listings     Listing[]
+  reservations Reservation[]
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // we need the unique combination of the provider and provideraccountid hence the below statement will provide the same
+
+  @@unique([provider,providerAccountId])
+
+
+
+}
+
+model Listing{
+   id             String    @id @default(auto()) @map("_id") @db.ObjectId
+
+   title String
+   description String
+   imageSrc  String
+   createdAt DateTime  @default(now())
+   category String
+  //  roomCount Int ===>
+  tableCount Int
+  //  bathroomCount Int
+   guestCount Int
+   locationValue String
+   userId String@db.ObjectId
+   price Int
+   //extraaa
+   cuisineValue String
+   covid19Protocols Boolean
+
+
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  reservations Reservation[]
+
+
+
+
+}
+
+model Reservation{
+   id             String    @id @default(auto()) @map("_id") @db.ObjectId
+   userId String@db.ObjectId
+   listingId String@db.ObjectId
+  //  startDate DateTime==>
+  startTime DateTime
+  endTime DateTime
+
+  //  endDate DateTime
+totalPrice Int
+createdAt DateTime@default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+
+listing Listing @relation(fields: [listingId],references: [id],onDelete:Cascade)
+}
