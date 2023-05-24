@@ -1,32 +1,42 @@
-'use client';
-import {AiOutlineMenu} from 'react-icons/ai'
-import Avatar from '../Avatar';
-import { use, useCallback, useState } from 'react';
-import MenuItem from './MenuItem';
-import useRegisterModal from '@/app/hooks/useRegisterModal';
+"use client";
+
+
+import { AiOutlineMenu } from "react-icons/ai";
+import Avatar from "../Avatar";
+import {  useCallback, useState } from "react";
+import MenuItem from "./MenuItem";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
+import { User } from "@prisma/client";
+import { signOut } from "next-auth/react";
+
+import {useRouter} from "next/navigation"
 //this will show the user menu
-//use state hook allows us to track state in a function component 
+//use state hook allows us to track state in a function component
 // useState accepts an initial state and returns two values:
+
 
 // The current state.
 // A function that updates the state.
 
-const UserMenu = () => {
-
-  const registerModal =useRegisterModal();
-
-  const[isopen,setIsOpen] = useState(false);
-//callback hooks 
-const toggleOpen = useCallback(()=>{
-  setIsOpen((value)=>!value) 
-},[]);
-
+interface UserMenuProps {
+  currentUser?: User | null;
+}
+const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+  const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
+  const [isopen, setIsOpen] = useState(false);
+  //callback hooks
+  const toggleOpen = useCallback(() => {
+    setIsOpen((value) => !value);
+  }, []);
 
   return (
     <div className="relative">
-        <div className="flex flex-row items-center gap-3">
-            <div onClick={()=>{}
-            } className="hidden
+      <div className="flex flex-row items-center gap-3">
+        <div
+          onClick={() => {}}
+          className="hidden
             md:block
             text-sm
             font-semibold
@@ -37,11 +47,13 @@ const toggleOpen = useCallback(()=>{
             transition
             cursor-pointer
 
-            ">
-                Wanderwise Your home
-            </div>
-            <div onClick={toggleOpen}
-            className="p-4
+            "
+        >
+          Wanderwise Your home
+        </div>
+        <div
+          onClick={toggleOpen}
+          className="p-4
             md:py-1
             md:px-2
             border-[1px] 
@@ -54,17 +66,18 @@ const toggleOpen = useCallback(()=>{
             cursor-pointer
             hover:shadow-md
             transition
-            "> 
-            <AiOutlineMenu/>
-            <div className="hidden md-block">
-                <Avatar/> 
-
-            </div>
-            </div>
+            "
+        >
+          <AiOutlineMenu />
+          <div className="hidden md-block">
+            <Avatar src = {currentUser?.image}/>
+          </div>
         </div>
-  {/* if the toggle fun is open we are going to render this div */}
-{isopen &&(
-  <div className='
+      </div>
+      {/* if the toggle fun is open we are going to render this div */}
+      {isopen && (
+        <div
+          className="
   absolute 
   rounded-xl
   shadow-md
@@ -77,29 +90,39 @@ const toggleOpen = useCallback(()=>{
   text-sm
 
 
-  ' >
-<div className='
+  "
+        >
+          <div
+            className="
 flex
 flex-col
-cursor-pointer'>
-  <>
-  <MenuItem
-  onClick={()=>{}}
-  label='Login'
-  />
-   <MenuItem
-  onClick={registerModal.onOpen}
-  label='Sign Up'
-  />
+cursor-pointer"
+          >
+            {/* we will write some conditions on which the the menu bar will behave depending  upon if the user is logged in or not  */}
 
-  </>
+            {currentUser ? (
+              <>
+                <MenuItem onClick={() => {}} label="My trips" />
+                <MenuItem onClick={() => {}} label="My favourites" />
+                <MenuItem onClick={() => {}} label="My Reservations" />
+                <MenuItem onClick={() => {}} label="My Restraunts" />
+{/* this home button will disappear on mobile phones */}
 
-</div>
-  </div>
-)}
+                <MenuItem onClick={() => {}} label="WanderWise My Home" />
 
+                <MenuItem onClick={() => {signOut}} label="Logout" />
+              </>
+            ) : (
+              <>
+                <MenuItem onClick={loginModal.onOpen} label="Login" />
+                <MenuItem onClick={registerModal.onOpen} label="Sign Up" />
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default UserMenu
+export default UserMenu;

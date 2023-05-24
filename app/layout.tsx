@@ -7,6 +7,11 @@ import ClientOnly from './components/ClientOnly'
 import Modal from './components/modals/Modal'
 import RegisterModal from './components/modals/RegisterModal'
 import ToasterProvider from './providers/ToasterProvider'
+
+import LoginModal from './components/modals/LoginModal'
+
+import getCurrentUser from './actions/getCurrentUser'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -17,20 +22,27 @@ export const metadata = {
 
 const font = Nunito({subsets:["latin"],});
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+const currentUser = await getCurrentUser();
+
+
   return (
     <html lang="en">
       <body className={font.className}>
 
       <ClientOnly>
         {/* <Modal actionLabel='Submit' title='hello' isOpen/> */}
+        <ToasterProvider/>
+        <LoginModal/>
         <RegisterModal/>
-<ToasterProvider/>
-      <Navbar/>
+      {/* we have to use the current user which we got into out server component and we will pass it to the Navbar */}
+  
+      <Navbar  currentUser = {currentUser}/>
       </ClientOnly>
        
 
