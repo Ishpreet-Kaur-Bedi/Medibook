@@ -5,8 +5,8 @@ const Avatar = () => {
   return (
    <Image 
    className ="rounded-full"
-   height = "30"
    width = "30"
+   height = "30"
    alt = "Avatar"
    src="/images/placeholder.jpg"
    /> 
@@ -14,4 +14,4 @@ const Avatar = () => {
   );
 }
 
-export default Avatar
+export default Avatar;

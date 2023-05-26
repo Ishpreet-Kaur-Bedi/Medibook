@@ -1,5 +1,5 @@
 'use client'
-
+// this is the container of the navbar which contains three sections
 
 interface ContainerProps
 {

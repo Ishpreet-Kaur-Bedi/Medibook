@@ -30,6 +30,7 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.8",
     "@types/bcrypt": "^5.0.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",

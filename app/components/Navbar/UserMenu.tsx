@@ -7,10 +7,10 @@ import {  useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
 
 import {useRouter} from "next/navigation"
+import { SafeUser } from "@/app/types";
 //this will show the user menu
 //use state hook allows us to track state in a function component
 // useState accepts an initial state and returns two values:
@@ -20,12 +20,12 @@ import {useRouter} from "next/navigation"
 // A function that updates the state.
 
 interface UserMenuProps {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 }
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
-  const [isopen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   //callback hooks
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
@@ -69,13 +69,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             "
         >
           <AiOutlineMenu />
-          <div className="hidden md-block">
-            <Avatar src = {currentUser?.image}/>
+          <div className="hidden md:block">
+            <Avatar/>
           </div>
         </div>
       </div>
       {/* if the toggle fun is open we are going to render this div */}
-      {isopen && (
+      {isOpen && (
         <div
           className="
   absolute 
@@ -109,8 +109,9 @@ cursor-pointer"
 {/* this home button will disappear on mobile phones */}
 
                 <MenuItem onClick={() => {}} label="WanderWise My Home" />
+<hr />
 
-                <MenuItem onClick={() => {signOut}} label="Logout" />
+                <MenuItem onClick={() => signOut()} label="Logout" />
               </>
             ) : (
               <>

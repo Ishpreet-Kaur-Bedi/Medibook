@@ -19,4 +19,4 @@ src="/images/logo.png"
   )
 }
 
-export default Logo
+export default Logo;
