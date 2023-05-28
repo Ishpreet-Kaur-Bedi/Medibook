@@ -8,6 +8,7 @@ import Logo from "./Logo";
 import Search from "./Search";
  import UserMenu from "./UserMenu";
 import { SafeUser } from "@/app/types";
+import Categories from "./Categories";
 
 interface NavbarProps{
 
@@ -27,7 +28,7 @@ interface NavbarProps{
 <Container>
 {/* the entire navbar is divided in three sections */}
     <div
-    className="flex flex-row items-center justify-between gap-3
+    className="flex flex-row items-center justify-between gap-2
     md:gap-0">
         <Logo/>
 
@@ -39,6 +40,8 @@ interface NavbarProps{
     </Container>
 
         </div>
+
+        <Categories/>
       
      </div>
    );
