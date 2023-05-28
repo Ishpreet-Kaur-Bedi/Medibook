@@ -117,6 +117,11 @@ overflow-y-auto
 {categories.map((item)=>(
 
 
+
+
+
+
+
 <div key = {item.label} className="col-span-1">
 
 {item.label}
