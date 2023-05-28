@@ -11,6 +11,7 @@ import { signOut } from "next-auth/react";
 
 import {useRouter} from "next/navigation"
 import { SafeUser } from "@/app/types";
+import useRentModal from "@/app/hooks/useRentModal";
 //this will show the user menu
 //use state hook allows us to track state in a function component
 // useState accepts an initial state and returns two values:
@@ -25,17 +26,28 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const rentModal = useRentModal();
+
   const [isOpen, setIsOpen] = useState(false);
   //callback hooks
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
 
+
+  const onRent = useCallback(()=>{
+if(!currentUser){
+  return loginModal.onOpen();
+
+
+}
+rentModal.onOpen();
+  },[currentUser,loginModal,rentModal])
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className="hidden
             md:block
             text-sm
@@ -108,7 +120,7 @@ cursor-pointer"
                 <MenuItem onClick={() => {}} label="My Restraunts" />
 {/* this home button will disappear on mobile phones */}
 
-                <MenuItem onClick={() => {}} label="WanderWise My Home" />
+                <MenuItem onClick={rentModal.onOpen} label="WanderWise My Home" />
 <hr />
 
                 <MenuItem onClick={() => signOut()} label="Logout" />

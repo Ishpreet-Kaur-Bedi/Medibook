@@ -11,6 +11,7 @@ import ToasterProvider from './providers/ToasterProvider'
 import LoginModal from './components/modals/LoginModal'
 
 import getCurrentUser from './actions/getCurrentUser'
+import RentModal from './components/modals/RentModal'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -37,6 +38,7 @@ const currentUser = await getCurrentUser();
       <ClientOnly>
         {/* <Modal actionLabel='Submit' title='hello' isOpen/> */}
         <ToasterProvider/>
+        <RentModal/>
         <LoginModal/>
         <RegisterModal/>
       {/* we have to use the current user which we got into out server component and we will pass it to the Navbar */}
