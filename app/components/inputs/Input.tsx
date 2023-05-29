@@ -47,8 +47,8 @@ type= {type}
 className={`
 peer
 w-full
-p-4
-pt-6
+p-3
+
 font-light
 bg-white
 border-2
@@ -74,7 +74,7 @@ text-md
 duration-150
 transform 
 -translate-y-3
-top-5
+top-3
 z-10
 origin-[0]
 

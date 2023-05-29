@@ -32,10 +32,10 @@ export default async function RootLayout({
 const currentUser = await getCurrentUser();
 
   return (
-    <html lang="en">
+    <html lang="en" >
       <body className={font.className}>
 
-      <ClientOnly>
+      
         {/* <Modal actionLabel='Submit' title='hello' isOpen/> */}
         <ToasterProvider/>
         <RentModal/>
@@ -44,7 +44,7 @@ const currentUser = await getCurrentUser();
       {/* we have to use the current user which we got into out server component and we will pass it to the Navbar */}
   
       <Navbar  currentUser = {currentUser}/>
-      </ClientOnly>
+     
        
 
 

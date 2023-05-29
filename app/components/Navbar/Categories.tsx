@@ -107,7 +107,7 @@ if(!isMainPage){
   return (
    <Container>
     <div className="
-    pt-4
+    
     flex
     flex-row
     items-center

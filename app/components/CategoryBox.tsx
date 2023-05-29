@@ -66,7 +66,7 @@ ${selected?'text-neutral-800':'text-neutral-500'}
 
 `}
     >
-<Icon size ={26}/>    
+<Icon size ={20}/>    
 
 <div className="font-medium text-sm">
 {

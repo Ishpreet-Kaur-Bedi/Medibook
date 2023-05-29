@@ -35,8 +35,7 @@ const Button :React.FC<ButtonProps> = ({
    hover:opacity-80
    transition
    w-full
-
-// bht saari conditions likh di abjidhar bhi jis type ka button lagega udhar us hisab se atrribute dete jaaynege
+   px-6
 
 
 
