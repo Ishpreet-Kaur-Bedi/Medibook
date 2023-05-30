@@ -36,6 +36,7 @@ const Button :React.FC<ButtonProps> = ({
    transition
    w-full
    px-6
+   py-2
 
 
 
