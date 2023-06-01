@@ -35,8 +35,8 @@ const RentModal = () => {
   const router = useRouter();
   const rentModal = useRentModal();
 
-  const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(STEPS.CATEGORY);
+  const [isLoading, setIsLoading] =useState(false);
 
   const { 
     register, 
@@ -81,21 +81,27 @@ const RentModal = () => {
     })
   }
 
+
+  //on clicking the back option it should  go to the last prop
   const onBack = () => {
     setStep((value) => value - 1);
   }
+// on lcicking the next buttton it should go to the next prop
 
   const onNext = () => {
     setStep((value) => value + 1);
   }
 
+  // this is the submit button 
+  // handle submit funciton will acceot the feild values 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     if (step !== STEPS.PRICE) {
       return onNext();
     }
     
     setIsLoading(true);
-
+//post call
+ 
     axios.post('/api/listings', data)
     .then(() => {
       toast.success('Listing created!');
@@ -154,8 +160,11 @@ const RentModal = () => {
               icon={item.icon}
             />
           </div>
+          
         ))}
+  
       </div>
+      <hr />
     </div>
   )
 
@@ -202,6 +211,8 @@ const RentModal = () => {
           title="Bathrooms" 
           subtitle="How many bathrooms do you have?"
         />
+        <hr />
+
       </div>
     )
   }
@@ -219,6 +230,47 @@ value = {imageSrc}
 onChange={(value)=>setCustomValue('imageSrc',value)}
 
 />
+<hr />
+
+</div>
+
+)
+
+}
+
+if(step ===STEPS.DESCRIPTION){
+
+bodyContent= (
+
+<div className="flex   flex-col  gap-8"  >
+
+<Heading
+
+title = "How would you describe your place"
+subtitle = "short and sweet works best " 
+
+/>
+<Input 
+id ="title"
+label='Title'
+disabled={isLoading}
+register={register}
+errors={errors}
+required
+
+/>
+<hr />
+<Input 
+
+id ="description"
+label='Description'
+disabled={isLoading}
+register={register}
+errors={errors}
+required
+
+/>
+<hr />
 </div>
 
 )
@@ -226,11 +278,47 @@ onChange={(value)=>setCustomValue('imageSrc',value)}
 }
 
 
+
+if(step===STEPS.PRICE)
+{
+bodyContent = (
+
+<div className="flex flex-col gap-8">
+
+<Heading
+
+title="Now, Set your  price"
+subtitle='How much do you charge for a night'
+
+/>
+
+<Input
+ id="price"
+ label = "Price"
+ formatPrice={true}
+
+ type = "number"
+ disabled={isLoading}
+ register ={register}
+ errors= { errors}
+ required
+
+
+
+
+/>
+<hr />
+</div>
+
+)
+}
+
+
   return (
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title="Airbnb your home!"
+      title="Wanderwise your home!"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}
