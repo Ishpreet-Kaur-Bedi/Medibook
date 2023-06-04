@@ -35,9 +35,9 @@ const currentUser = await getCurrentUser();
     <html lang="en" >
       <body className={font.className}>
 
-      
-        {/* <Modal actionLabel='Submit' title='hello' isOpen/> */}
-        <ToasterProvider/>
+      <ClientOnly>
+  {/* <Modal actionLabel='Submit' title='hello' isOpen/> */}
+  <ToasterProvider/>
         <RentModal/>
         <LoginModal/>
         <RegisterModal/>
@@ -45,10 +45,14 @@ const currentUser = await getCurrentUser();
   
       <Navbar  currentUser = {currentUser}/>
      
-       
+      </ClientOnly>
+      
+       <div className='pb-20 pt-28'>
+       {children}
+       </div>
 
 
-        {children}</body>
+        </body>
     </html>
   )
 }
