@@ -92,8 +92,8 @@ model Reservation{
    userId String@db.ObjectId
    listingId String@db.ObjectId
   //  startDate DateTime==>
-  startTime DateTime
-  endTime DateTime
+  startDate DateTime
+  endDate DateTime
 
   //  endDate DateTime
 totalPrice Int

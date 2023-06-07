@@ -1,5 +1,5 @@
 'use client'
-import { AiOutlineHeart
+import { AiFillHeart, AiOutlineHeart
  } from "react-icons/ai";
 import { SafeUser } from "../types";
 interface HeartButtonProps{
@@ -26,7 +26,7 @@ const toggleFavourite =()=>{};
     hover:opacity-80
     transition
     cursor-pointer
-    jkbiuhcd
+   
     
 
 
@@ -38,12 +38,26 @@ const toggleFavourite =()=>{};
       size={28}
       className="
       fill-white
-      abs
-      
+      absolute 
+      -top-[2px]
+      -right-[2px]
       
       "
       
       />
+
+<AiFillHeart
+size={24}
+className={
+hasFavourited ?' fill-rose-500' : 'fill-neutral-500/70'
+
+
+
+}
+
+/>
+
+
     </div>
   )
 }

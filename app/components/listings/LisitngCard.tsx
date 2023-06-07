@@ -16,7 +16,7 @@ onAction?:(id:string)=> void;
 disabled ?:boolean;
 actionLabel?:string;
 actionId?:string;
-currentUser?: SafeUser| null
+currentUser?: SafeUser| null;
 
 
 }
@@ -67,8 +67,8 @@ if(! reservation){
     return null;
 
 }
-const start = new Date(reservation.startTime);
-const end = new Date(reservation.endTime);
+const start = new Date(reservation.startDate);
+const end = new Date(reservation.endDate);
 
 return `${format(start,'PP')}- ${format(end,'PP')}`
 
