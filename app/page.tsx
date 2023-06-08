@@ -3,7 +3,7 @@ import getListings from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
-import LisitngCard from "./components/listings/LisitngCard";
+import LisitngCard from "./components/listings/LisitingCard";
 
 
 export default async function Home() {
