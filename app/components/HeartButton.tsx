@@ -6,8 +6,6 @@ interface HeartButtonProps{
 
 listingId:string;
 currentUser?: SafeUser| null;
-
-
 }
 
 const HeartButton:React.FC<HeartButtonProps> = ({
@@ -40,8 +38,7 @@ const toggleFavourite =()=>{};
       fill-white
       absolute 
       -top-[2px]
-      -right-[2px]
-      
+      -right-[2px] 
       "
       
       />

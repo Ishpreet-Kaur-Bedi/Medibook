@@ -10,6 +10,7 @@ const listings = await prisma.listing.findMany({
 return listings;
      }
      catch(error:any){
+        console.log(error)
         throw new Error(error);
      }
 }
