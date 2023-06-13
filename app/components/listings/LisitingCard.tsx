@@ -1,7 +1,7 @@
 "use client";
 
 import useCountries from "@/app/hooks/useCountries";
-import { SafeUser } from "@/app/types";
+import { SafeUser,SafeListing } from "@/app/types";
 import { Listing, Reservation } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import React,{ useCallback,useMemo } from "react";
@@ -11,7 +11,7 @@ import HeartButton from "../HeartButton";
 import Button from "../Button";
 interface ListingCardProps{
 
-data:Listing;
+data:SafeListing;
 reservation?: Reservation;
 onAction?:(id:string)=> void;
 disabled ?:boolean;
@@ -78,8 +78,8 @@ return `${format(start,'PP')}- ${format(end,'PP')}`
   return (
     <div 
     
-    onClick={()=>router.push(`/listings/data.id`)}
-    className=" col-span cursor-pointer group">
+    onClick={()=>router.push(`/listings/${data.id}`)}
+    className=" col-span-1 cursor-pointer group">
       <div  className=" flex flex-col gap-2 w-full">
 <div className=" aspect-square
 w-full
@@ -101,7 +101,7 @@ transition
 
 <div className=" absolute top-3 right-3">
 <HeartButton
-listingId={data.id}
+listingID={data.id}
 currentUser={currentUser}
 
 />

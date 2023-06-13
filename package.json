@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "-": "^0.0.1",
@@ -17,10 +18,12 @@
     "@types/react-dom": "18.2.3",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
+    "date": "^2.0.2",
     "date-fns": "^2.30.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.4.1",
     "leaflet": "^1.9.4",
+    "mongoose": "^7.2.3",
     "next": "^13.4.4",
     "next-auth": "^4.22.1",
     "next-cloudinary": "^4.12.0",
