@@ -118,7 +118,7 @@ cursor-pointer"
                 <MenuItem onClick={() => router.push("/trips")} label="My trips" />
                 <MenuItem onClick={() => router.push("/favorites")} label="My favourites" />
                 <MenuItem onClick={() => router.push("/reservations")} label="My Reservations" />
-                <MenuItem onClick={() => {}} label="My Restraunts" />
+                <MenuItem onClick={() => router.push("/properties")} label="My Restraunts" />
 {/* this home button will disappear on mobile phones */}
 
                 <MenuItem onClick={rentModal.onOpen} label="WanderWise My Home" />
