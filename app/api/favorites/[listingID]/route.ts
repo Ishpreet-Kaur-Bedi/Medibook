@@ -27,9 +27,9 @@ if(!listingID || typeof listingID !=='string')
     throw new Error('Invalid ID')
 }
 
-let favoriteIds = [...(currentUser.favoriteIds) ||[]]
+let favoriteIDs = [...(currentUser.favoriteIDs) ||[]]
 
-favoriteIds.push(listingID);
+favoriteIDs.push(listingID);
 
 const user = await prisma.user.update({
 where:{
@@ -37,7 +37,7 @@ where:{
 },
 
 data:{
-    favoriteIds
+    favoriteIDs
 }
 ////// a mmistake favouriteIds is correct beacue i have used the same name in prisma no favoriteIDs
 });
@@ -63,16 +63,16 @@ throw new Error('Invalid Id')
 
 }
 
-let favoriteIds =[...(currentUser.favoriteIds||[])]
+let favoriteIDs =[...(currentUser.favoriteIDs||[])]
 
-favoriteIds = favoriteIds.filter((id)=> id !==listingID);
+favoriteIDs = favoriteIDs.filter((id)=> id !==listingID);
 
 const user = await prisma.user.update({
 where:{
     id:currentUser.id
 },
 data:{
-    favoriteIds
+    favoriteIDs
 }
 });
 

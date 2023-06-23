@@ -39,7 +39,7 @@ where:{
 data:{
     reservations:{
         create:{
-            userID: currentUser.id,
+            userId: currentUser.id,
             startDate,
             endDate,
             totalPrice

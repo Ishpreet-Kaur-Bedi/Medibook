@@ -1,7 +1,7 @@
-'use  client'
+'use client'
 import {toast} from "react-hot-toast"
 import axios from "axios"
-import { use, useCallback,useState} from "react"
+import { use, useCallback, useState} from "react"
 import {useRouter} from "next/navigation";
 
 import {SafeUser,SafeReservation} from "../types";

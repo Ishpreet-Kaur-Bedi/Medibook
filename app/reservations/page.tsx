@@ -35,7 +35,8 @@ return(
 <ClientOnly>
 <ReservationsClient
 reservations = {reservations}
-currentUser = {currentUser}/>
+currentUser = {currentUser}
+/>
 
 
 </ClientOnly>)

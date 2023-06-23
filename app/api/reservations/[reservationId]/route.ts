@@ -30,10 +30,10 @@ export async function DELETE(
             id:reservationID,
             OR:[
                 {
-                    userID:currentUser.id
+                    userId:currentUser.id
                 },
                 {
-                    listing:{userID:currentUser.id}
+                    listing:{userId:currentUser.id}
 
                 }
             ]

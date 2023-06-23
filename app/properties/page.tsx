@@ -21,7 +21,7 @@ subtitle = "Please Login"
     )
 }
 const listings = await getListings({
-    userID:currentUser.id
+    userId:currentUser.id
 });
 if(listings.length===0){
 return (

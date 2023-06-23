@@ -22,7 +22,7 @@ subtitle = "Please Login"
     )
 }
 const reservations = await getReservations({
-    userID:currentUser.id
+    userId:currentUser.id
 });
 if(reservations.length===0){
 return (
