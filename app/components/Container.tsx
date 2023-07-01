@@ -6,7 +6,8 @@ interface ContainerProps
     children:React.ReactNode;
 
 }
-
+// a single prop called children of type React.ReactNode, which allows any valid React node to be passed as children.
+// const Container: React.FC<ContainerProps> = ({ children }) => { ... }: This declares the Container component as a functional component using the React.FC type. It takes in the ContainerProps as its prop type. The component receives the prop object destructured as { children }
 const Container:React.FC<ContainerProps> = ({children}) => {
   return (
     <div className="max-w-[2520px]
@@ -16,6 +17,8 @@ const Container:React.FC<ContainerProps> = ({children}) => {
     sm:px-2
     px-4 "
     >
+{/* 
+      //This is where the nested content or components will be rendered. The children prop is used here to render the components passed as children inside the container. */}
     {children}
 
     </div>

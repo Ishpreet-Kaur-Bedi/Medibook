@@ -1,6 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.poppins-font {
+  font-family: 'Poppins', sans-serif;
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* 
+html: The html element represents the root element of an HTML document. By setting its height to 100vh, it means the height of the html element will be equal to 100% of the viewport height (the height of the browser window).
+
+body: The body element represents the main content of an HTML document. By setting its height to 100vh, it means the height of the body element will also be equal to 100% of the viewport height. This effectively makes the body element occupy the entire height of the browser window.
+
+:root: The :root pseudo-class represents the root element of the document, which is the html element. By setting its height to 100vh, it applies the same height as the html and body elements, ensuring consistency throughout the documen */
 
 html,body,
 :root{
@@ -15,7 +28,7 @@ html,body,
 .leaflet-pane,
 .leaflet-top{
 
-z-index:0!important;
+z-index:0 !important;
 
 }
 .rdrMonth{

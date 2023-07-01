@@ -1,35 +1,56 @@
-
+import Container from "@/app/components/Container";
+import LisitngCard from "./components/listings/LisitingCard";
 import EmptyState from "@/app/components/EmptyState";
-import ClientOnly from "@/app/components/ClientOnly";
 
+import getListings, { 
+  IListingsParams
+} from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import getFavoriteListings from "@/app/actions/getFavoriteListing";
+import ClientOnly from "./components/ClientOnly";
 
-import FavoritesClient from "./favorites/FavoritesClient";
+interface HomeProps {
+  searchParams: IListingsParams
+};
 
-const ListingPage = async () => {
-  const listings = await getFavoriteListings();
+const Home = async ({ searchParams }: HomeProps) => {
+  const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
   if (listings.length === 0) {
     return (
       <ClientOnly>
-        <EmptyState
-          title="No favorites found"
-          subtitle="Looks like you have no favorite listings."
-        />
+        <EmptyState showReset />
       </ClientOnly>
     );
   }
 
   return (
     <ClientOnly>
-      <FavoritesClient
-        listings={listings}
-        currentUser={currentUser}
-      />
+      <Container>
+        <div 
+          className="
+            pt-24
+            grid 
+            grid-cols-1 
+            sm:grid-cols-2 
+            md:grid-cols-3 
+            lg:grid-cols-4
+            xl:grid-cols-5
+            2xl:grid-cols-6
+            gap-8
+          "
+        >
+          {listings.map((listing: any) => (
+            <LisitngCard
+              currentUser={currentUser}
+              key={listing.id}
+              data={listing}
+            />
+          ))}
+        </div>
+      </Container>
     </ClientOnly>
-  );
+  )
 }
- 
-export default ListingPage;
+
+export default Home;

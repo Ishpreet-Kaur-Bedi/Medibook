@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
+
+
 import prisma from "@/app/libs/prismadb"
 
 
@@ -39,7 +41,7 @@ where:{
 data:{
     favoriteIDs
 }
-////// a mmistake favouriteIds is correct beacue i have used the same name in prisma no favoriteIDs
+
 });
 return NextResponse.json(user);
 

@@ -134,9 +134,9 @@ md:gap-10
 user={listing.user}
 category={category}
 description = {listing.description}
-roomCount={listing.roomCount}
-guestCount = {listing.guestCount}
-bathroomCount= {listing.bathroomCount}
+patientCount={listing.patientCount}
+address = {listing.address}
+bedCount= {listing.bedCount}
 locationValue={listing.locationValue}
 
 />

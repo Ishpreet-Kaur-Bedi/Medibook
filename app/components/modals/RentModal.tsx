@@ -51,21 +51,23 @@ const RentModal = () => {
     defaultValues: {
       category: '',
       location: null,
-      guestCount: 1,
-      roomCount: 1,
-      bathroomCount: 1,
+   
+      patientCount: 1,
+      bedCount: 1,
+  
       imageSrc: '',
-      price: 1,
+      price: null,
       title: '',
       description: '',
+      address:'',
     }
   });
 
   const location = watch('location');
   const category = watch('category');
-  const guestCount = watch('guestCount');
-  const roomCount = watch('roomCount');
-  const bathroomCount = watch('bathroomCount');
+  const patientCount = watch('patientCount');
+
+  const bedCount = watch('bedCount');
   const imageSrc = watch('imageSrc');
 
   const Map = useMemo(() => dynamic(() => import('../Map'), { 
@@ -75,9 +77,10 @@ const RentModal = () => {
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
+      shouldValidate: true,
       shouldDirty: true,
       shouldTouch: true,
-      shouldValidate: true
+      
     })
   }
 
@@ -133,12 +136,12 @@ const RentModal = () => {
 
     return 'Back'
   }, [step]);
-
+//using let keyword because the bodycontent will be changeing depending upon the step
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Which of these best describes your place?"
-        subtitle="Pick a category"
+        title="In which field you provide expertise to the patients"
+        subtitle="Pick  a Specialisation"
       />
       <div 
         className="
@@ -179,6 +182,7 @@ const RentModal = () => {
           value={location} 
           onChange={(value) => setCustomValue('location', value)} 
         />
+
         <Map center={location?.latlng} />
       </div>
     );
@@ -188,28 +192,22 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Share some basics about your place"
-          subtitle="What amenitis do you have?"
+          title="Share some features about your hospital"
+          subtitle=""
         />
         <Counter 
-          onChange={(value) => setCustomValue('guestCount', value)}
-          value={guestCount}
-          title="Guests" 
-          subtitle="How many guests do you allow?"
+          onChange={(value) => setCustomValue('patientCount', value)}
+          value={patientCount}
+          title="patient" 
+          subtitle="How many Patients can visit?"
         />
+     
         <hr />
         <Counter 
-          onChange={(value) => setCustomValue('roomCount', value)}
-          value={roomCount}
-          title="Rooms" 
-          subtitle="How many rooms do you have?"
-        />
-        <hr />
-        <Counter 
-          onChange={(value) => setCustomValue('bathroomCount', value)}
-          value={bathroomCount}
-          title="Bathrooms" 
-          subtitle="How many bathrooms do you have?"
+          onChange={(value) => setCustomValue('bedCount', value)}
+          value={bedCount}
+          title="BedCount" 
+          subtitle="How many available beds you have"
         />
         <hr />
 
@@ -221,8 +219,8 @@ bodyContent=(
 <div className=' flex flex-col gap-8'>
   <Heading
   
-  title='Add photo of your place'
-  subtitle='Show guests what your place looks like'
+  title='Add photo of your Hospital'
+  subtitle='Show patients what your place looks like'
   
   />
 <ImageUpload
@@ -246,7 +244,7 @@ bodyContent= (
 
 <Heading
 
-title = "How would you describe your place"
+title = "How would you describe your hospital"
 subtitle = "short and sweet works best " 
 
 />
@@ -259,11 +257,21 @@ errors={errors}
 required
 
 />
-<hr />
+
 <Input 
 
 id ="description"
 label='Description'
+disabled={isLoading}
+register={register}
+errors={errors}
+required
+
+/>
+<Input 
+
+id ="address"
+label='Address'
 disabled={isLoading}
 register={register}
 errors={errors}
@@ -288,7 +296,7 @@ bodyContent = (
 <Heading
 
 title="Now, Set your  price"
-subtitle='How much do you charge for a night'
+subtitle='How much do you charge for a visit'
 
 />
 
@@ -318,7 +326,7 @@ subtitle='How much do you charge for a night'
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title="Wanderwise your home!"
+      title=" Medibook your Medicine!"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}

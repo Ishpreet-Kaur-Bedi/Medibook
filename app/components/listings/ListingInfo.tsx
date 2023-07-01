@@ -13,9 +13,10 @@ const Map = dynamic(()=>import('../Map'),{
 interface ListingInfoProps{
     user:SafeUser;
     description: string
-    guestCount:number
-roomCount:number;
-bathroomCount:number;
+
+patientCount:number;
+bedCount:number;
+address:String;
 category:{
     icon:IconType;
     label:string
@@ -26,11 +27,11 @@ locationValue:string
 const ListingInfo:React.FC<ListingInfoProps> = ({
     user,
     description,
-    guestCount,
-    roomCount,
-    bathroomCount,
+    address,
+    patientCount,
+    bedCount,
     category,
-    locationValue
+    locationValue,
 
 }) => {
 const {getByValue} = useCountries();
@@ -60,13 +61,14 @@ const coordinates = getByValue(locationValue)?.latlng
 
         ">
 <div>
-    {guestCount} guests
+    {patientCount} patients
+</div>
+
+<div>
+    {bedCount} beds
 </div>
 <div>
-    {roomCount} rooms
-</div>
-<div>
-    {bathroomCount} bathrooms
+{address}
 </div>
         </div>
      </div>
@@ -78,14 +80,12 @@ const coordinates = getByValue(locationValue)?.latlng
         description = {category.description}/>
      )}
      <hr />
-     <div className="text-lg fonst-light text-neutral-500">
-        {description}
-     </div>
-     <hr />
      <div className="text-lg font-light text-neutral-500">
         {description}
      </div>
      <hr />
+     
+  
   <Map center ={coordinates}/>
     </div>
   )

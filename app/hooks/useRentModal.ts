@@ -1,4 +1,3 @@
-// this hook will control whether the login modal is open or closed
 
 import {create} from 'zustand';
  

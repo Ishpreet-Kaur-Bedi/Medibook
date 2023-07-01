@@ -64,7 +64,7 @@ const RegisterModal= () => {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="Welcome to Wanderwise"
+        title="Welcome to Medibook"
         subtitle="Create an account!"
         center
       />

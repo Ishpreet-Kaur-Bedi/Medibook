@@ -4,10 +4,11 @@ import prisma from "@/app/libs/prismadb";
 
 export interface IListingsParams{
     userId?:string;
-    guestCount?:number;
-    roomCount?:number;
-    bathroomCount?:number;
+    patientCount?:number;
+    bedCount?:number;
+
     startDate?:string;
+    address?:string;
     endDate?:string;
     locationValue?:string;
     category?:string;
@@ -19,10 +20,11 @@ export default async function getListings( params:IListingsParams){
 
      try{
 
-const{userId,
-roomCount,
-guestCount,
-bathroomCount,
+const{
+userId,
+patientCount,
+bedCount,
+
 locationValue,
 startDate,
 category,
@@ -38,24 +40,23 @@ if(category){
 }
 
 //gte==greater than or equal to
-if(roomCount){
-    query.roomCount = {
-        gte:+roomCount
+
+
+
+
+if(bedCount){
+    query.bedCount = {
+        gte:+bedCount
     }
 }
-if(guestCount){
-    query.guestCount = {
-        gte:+guestCount
-    }
-}
-if(bathroomCount){
-    query.bathroomCount = {
-        gte:+bathroomCount
+if(patientCount){
+    query.patientCount = {
+        gte:+patientCount
     }
 }
 
 if(locationValue){
-    query.locationValue=locationValue;
+    query.locationValue=location;
 }
 
 
@@ -67,11 +68,12 @@ if(startDate&& endDate){
                 OR:[
                 {
                     endDate:{gte:startDate},
-                    startDate:{lte:startDate},
+                    startDate:{lte:startDate}
                 },
+
                 {
                     startDate:{lte:endDate},
-                    endDateL:{gte:startDate}
+                    endDate:{gte:startDate}
                 }
             ]
             }
@@ -82,12 +84,19 @@ if(startDate&& endDate){
 
 
 const listings = await prisma.listing.findMany({
-    where:query,
-    orderBy:{
+    where: query,
+    orderBy: {
         createdAt:'desc'
     }
 });
-return listings;
+
+const safeListings = listings.map((listing) => ({
+    ...listing,
+    createdAt: listing.createdAt.toISOString(),
+  }));
+
+  return safeListings;
+  
      }
      catch(error:any){
         console.log(error)

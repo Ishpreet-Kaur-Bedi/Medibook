@@ -1,13 +1,15 @@
 'use client'
+import { IconType } from "react-icons";
 interface ListingCategoryProps{
     icon:IconType;
     label:string;
     description:string;
+    
 }
 const ListingCategory:React.FC<ListingCategoryProps> = ({
-icon,
+icon:Icon,
 label,
-description
+description,
 
 
 }) => {
@@ -16,9 +18,10 @@ description
         <div className=" flex flex-row items-center gap-4">
 <Icon size={40} className="text-neutral"/>
 <div className="flex flex-col">
-    <div className="text-lg font-semibold">
+    <div className="text-lg font-bold">
         {label}
     </div>
+    
     <div className="text-neutral-500 font-light">
         {description}
     </div>

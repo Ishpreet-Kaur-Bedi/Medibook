@@ -2,7 +2,25 @@ import { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 import Button from "../Button";
+// isOpen?: boolean: This property represents whether the modal is open or closed. It is optional (?) and of type boolean. By default, it is assumed that the modal is closed if this prop is not provided.
 
+// onClose: () => void: This property represents a function that will be called when the modal is closed. It is a required prop and defined as a function that takes no arguments and does not return anything (void). This allows you to provide a callback function that will be executed when the user closes the modal.
+
+// onSubmit: () => void: This property represents a function that will be called when the user submits or confirms an action within the modal. It is a required prop and defined as a function that takes no arguments and does not return anything (void). This allows you to provide a callback function that will be executed when the user performs the desired action within the modal.
+
+// title?: string: This property represents the title of the modal. It is optional (?) and of type string. By default, it is assumed that the modal does not have a title if this prop is not provided.
+
+// body?: React.ReactElement: This property represents the body content of the modal. It is optional (?) and of type React.ReactElement. This allows you to pass any valid React element/component as the body content of the modal.
+
+// footer?: React.ReactElement: This property represents the footer content of the modal. It is optional (?) and of type React.ReactElement. This allows you to pass any valid React element/component as the footer content of the modal.
+
+// actionLabel: string: This property represents the label or text of the primary action button within the modal. It is a required prop and of type string. This allows you to provide a label for the primary action button.
+
+// disabled?: boolean: This property represents whether the primary action button should be disabled. It is optional (?) and of type boolean. By default, it is assumed that the button is enabled if this prop is not provided.
+
+// secondaryAction?: () => void: This property represents a function that will be called when the user performs a secondary action within the modal. It is optional (?) and defined as a function that takes no arguments and does not return anything (void). This allows you to provide a callback function that will be executed when the user performs a secondary action.
+
+// secondaryActionLabel?: string: This property represents the label or text of the secondary action button within the modal. It is optional (?) and of type string. This allows you to provide a label for the secondary action button.
 interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
