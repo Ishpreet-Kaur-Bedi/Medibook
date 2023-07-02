@@ -8,13 +8,16 @@ import EmptyState from "@/app/components/EmptyState";
 import ListingClient from "./ListingClient";
 
 interface IParams {
-  listingID?: string;
+  ListingID: string;
 }
 
 const ListingPage = async ({ params }: { params: IParams }) => {
-  console.log("Listing ID:", params.listingID);
-  const listing = await getListingbyID({ listingID: params.listingID });
-  const reservations = await getReservations(params);
+  console.log("params:", params);
+  console.log("params.ListingID:", params.ListingID);
+
+  const listing = await getListingbyID({ listingID: params.ListingID });
+  console.log("listing:", listing);
+  // const reservations = await getReservations(params);
   const currentUser = await getCurrentUser();
 
   if (!listing) {
@@ -29,7 +32,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
     <ClientOnly>
       <ListingClient
         listing={listing}
-        reservations={reservations}
+        // reservations={reservations}
         currentUser={currentUser}
       />
     </ClientOnly>
