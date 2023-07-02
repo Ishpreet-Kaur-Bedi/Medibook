@@ -20,7 +20,7 @@ datasource db {
 //hashed password is optional because we will be using social media handles
 
 model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId 
   name           String?
   email          String?   @unique
   emailVerified  DateTime?
@@ -62,7 +62,7 @@ model Account {
 }
 
 model Listing{
-   id             String    @id @ default(auto()) @map("_id") @db.ObjectId
+   id             String    @id @ default(auto()) @map("_id") @db.ObjectId 
 
    title String
    description String
@@ -74,7 +74,7 @@ model Listing{
    bedCount Int
    
   locationValue String
-   userId String@db.ObjectId
+   userId String @db.ObjectId
    price Int
    
 
@@ -89,7 +89,7 @@ model Listing{
 model Reservation{
    id             String    @id @default(auto()) @map("_id") @db.ObjectId
    userId String@db.ObjectId
-   listingID String@db.ObjectId
+   listingID String@db.ObjectId   @unique
   //  startDate DateTime==>
   startDate DateTime
   endDate DateTime
