@@ -53,6 +53,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
     if (!reservation) {
       return null;
     }
+
     const start = new Date(reservation.startDate);
     const end = new Date(reservation.endDate);
 
@@ -73,6 +74,7 @@ overflow-hidden
 rounded-xl
 "
         >
+          
           <Image
             fill
             alt="Listing"
