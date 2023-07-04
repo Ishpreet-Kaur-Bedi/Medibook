@@ -14,10 +14,12 @@ interface IParams {
 const ListingPage = async ({ params }: { params: IParams }) => {
   console.log("params:", params);
   console.log("params.ListingID:", params.listingID);
+  
 
   const listing = await getListingbyID({ listingID: params.listingID });
   console.log("listing:", listing);
   const reservations = await getReservations(params);
+  console.log("reservations:", reservations);
   const currentUser = await getCurrentUser();
 
   if (!listing) {

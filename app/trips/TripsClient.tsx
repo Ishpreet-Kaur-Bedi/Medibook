@@ -47,7 +47,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
     <Container>
       <Heading
         title="Trips"
-        subtitle="Where you have been and where you are going"
+        subtitle="Your earlier and future bookings"
       />
 
       <div
@@ -65,6 +65,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
         {reservations.map((reservation) => (
           <ListingCard
             key={reservation.id}
+            reservation = {reservation}
             data={reservation.listing}
             actionId={reservation.id}
             onAction={onCancel}

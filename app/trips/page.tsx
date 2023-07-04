@@ -28,8 +28,8 @@ if(reservations.length===0){
 return (
     <ClientOnly>
         <EmptyState
-        title="No Trips found"
-        subtitle="Looks like you have not reserved any trips"/>
+        title="No Visits found"
+        subtitle="Looks like you have not booked any visit"/>
     </ClientOnly>
 )
 

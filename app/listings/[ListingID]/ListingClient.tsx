@@ -9,7 +9,7 @@ import ListingHead from "@/app/components/listings/ListingHead";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import { useRouter } from "next/navigation";
-import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
+import { differenceInCalendarDays, differenceInDays, eachDayOfInterval } from "date-fns";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { difference } from "next/dist/build/utils";
