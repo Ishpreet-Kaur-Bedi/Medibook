@@ -138,8 +138,9 @@ const RentModal = () => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="In which field you provide expertise to the patients"
-        subtitle="Pick  a Specialisation"
+        title="In which field do you specialize in providing expert care to patients?"
+        subtitle="
+        Choose an area of expertise."
       />
       <div 
         className="
@@ -173,8 +174,8 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Where is your place located?"
-          subtitle="Help guests find you!"
+          title="Where is your Hospital located?"
+          subtitle="Help patients find you!"
         />
         <CountrySelect 
           value={location} 
@@ -189,13 +190,13 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Share some features about your hospital"
-          subtitle=""
+          title="Highlight Key Features of Your Hospital"
+          subtitle="Providing Quality Care and Cutting-Edge Services"
         />
         <Counter 
           onChange={(value) => setCustomValue('patientCount', value)}
           value={patientCount}
-          title="patient" 
+          title="Patients" 
           subtitle="How many Patients can visit?"
         />
      
@@ -203,7 +204,7 @@ const RentModal = () => {
         <Counter 
           onChange={(value) => setCustomValue('bedCount', value)}
           value={bedCount}
-          title="BedCount" 
+          title="Beds" 
           subtitle="How many available beds you have"
         />
         <hr />
@@ -216,8 +217,9 @@ bodyContent=(
 <div className=' flex flex-col gap-8'>
   <Heading
   
-  title='Add photo of your Hospital'
-  subtitle='Show patients what your place looks like'
+  title='
+  Upload an image representing your hospital'
+  subtitle='Get a glimpse of the ambiance and facilities at our hospital'
   
   />
 <ImageUpload
@@ -241,8 +243,8 @@ bodyContent= (
 
 <Heading
 
-title = "How would you describe your hospital"
-subtitle = "short and sweet works best " 
+title = "How would you characterize your hospital?"
+subtitle = "Tell us about the unique features and services of your hospital." 
 
 />
 <Input 
@@ -323,7 +325,7 @@ subtitle='How much do you charge for a visit'
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title=" Medibook your Medicine!"
+      title="Healing lives, one prescription at a time!"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}

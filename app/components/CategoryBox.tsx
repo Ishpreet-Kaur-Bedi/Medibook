@@ -58,11 +58,11 @@ router.push(url);
     gap-2
     p-3
     border-b-2
-    hover:text-neutral-800
+    hover:text-[#304cad]
     transition
     cursor-pointer
-${selected?'border-b-neutral-800':'border-transparent'}
-${selected?'text-neutral-800':'text-neutral-500'}
+${selected?'border-[#305cad]':'border-transparent'}
+${selected?'text-[#305cad]':'text-black'}
 
 `}
     >

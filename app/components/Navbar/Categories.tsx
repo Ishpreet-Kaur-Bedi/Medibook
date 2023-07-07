@@ -8,7 +8,7 @@ import{MdChildCare, MdLocalHospital, MdOutlineEmergencyShare, MdOutlineHealthAnd
 import CategoryBox from "../CategoryBox"
 import { usePathname, useSearchParams } from "next/navigation"
 import {FaBrain, FaEyeDropper, FaLungsVirus, FaXRay} from 'react-icons/fa'
-import {BsSnow,BsGem} from 'react-icons/bs'
+
 
 
 
@@ -46,12 +46,12 @@ export const categories =[
     description:'Neurology is the specialty within the medical field pertaining to nerves and the nervous system. Neurologists diagnose and treat diseases of the brain, spinal cord, peripheral nerves, muscles, autonomic nervous system, and blood vessels. '
 },
 {
-    label: 'Gynecology',
+    label: 'Gynaecology',
     icon :MdPregnantWoman,
     description:'Obstetrician/gynecologists (OB/GYNs) care for the female reproductive system and associated disorders. This field of medicine encompasses a wide array of care, including the care of pregnant women, gynecologic care, oncology, surgery, and primary health care for women.'
 },
 {
-    label: 'Ophthlmology',
+    label: 'Ophthalmology',
     icon :FaEyeDropper,
     description:'Physicians specializing in ophthalmology develop comprehensive medical and surgical care of the eyes. Ophthalmologists diagnose and treat vision problems. '
 },

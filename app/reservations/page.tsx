@@ -28,7 +28,7 @@ if(reservations.length===0){
         <ClientOnly>
             <EmptyState
             title="No reservations found"
-            subtitle="Looks like you have no reservations on your property"/>
+            subtitle="There are currently no bookings for your hospital. However, don't worry! There are plenty of opportunities for patients to experience your exceptional care. Be prepared to provide top-notch medical services and create a positive impact on your patients' lives."/>
         </ClientOnly>
     )
 }

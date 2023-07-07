@@ -2,15 +2,13 @@
 import { PuffLoader } from "react-spinners"
 const Loading = () => {
   return (
-    <div  className=" h=[70vh]
-    flex
-    flex-col
-    justify center
-    items-center
-    ">
+    <div
+      className="flex justify-center items-center h-screen"
+      style={{ minHeight: "100vh" }}
+    >
       <PuffLoader
       size={100}
-      color="red"
+      color="#305cad"
       
       
       

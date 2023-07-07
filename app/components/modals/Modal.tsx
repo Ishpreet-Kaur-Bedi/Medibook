@@ -162,11 +162,13 @@ const Modal: React.FC<ModalProps> = ({
                     hover:opacity-70
                     transition
                     absolute
-                    left-9
+                    right-2
+                    top-2
                   "
                 >
                   <IoMdClose size={18} />
                 </button>
+                <hr />
                 <div className="text-lg font-semibold my-5">{title}</div>
               </div>
               {/*body*/}
@@ -197,7 +199,10 @@ const Modal: React.FC<ModalProps> = ({
                   />
                 </div>
                 {footer}
+                <hr />
               </div>
+              <hr />
+              
             </div>
           </div>
         </div>

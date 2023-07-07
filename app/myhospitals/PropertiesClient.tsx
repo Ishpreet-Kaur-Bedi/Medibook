@@ -29,7 +29,7 @@ const TripsClient: React.FC<PropertiesClientProps> = ({
         .delete(`/api/listings/${id}`)
 
         .then(() => {
-          toast.success("Listings deleted");
+          toast.success("Hospital deleted");
           router.refresh();
         })
 
@@ -45,7 +45,7 @@ const TripsClient: React.FC<PropertiesClientProps> = ({
   );
   return (
     <Container>
-      <Heading title="Hospitals" subtitle="List of your hospitals " />
+      <Heading title="Hospitals" subtitle="Discover our extensive collection of top-notch hospitals, where exceptional care meets architectural brilliance." />
 
       <div
         className="mt-10

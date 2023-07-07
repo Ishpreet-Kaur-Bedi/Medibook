@@ -59,9 +59,9 @@ const UserMenu: React.FC<UserMenuProps> = ({
             cursor-pointer
           "
         >
-          <span className="mr-2">     Medibook Registerations</span>
+          <span className="mr-2"> Join our Network</span>
   
-       <AiOutlineMedicineBox size={20}  style={{ color: "Blue" }} />
+       <AiOutlineMedicineBox size={25}  style={{ color: "#305cad" }} />
 
         </div>
         <div 
@@ -120,7 +120,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 />
                 <MenuItem 
                   label="My Hospitals" 
-                  onClick={() => router.push('/properties')}
+                  onClick={() => router.push('/myhospitals')}
                 />
                 <MenuItem 
                   label="Add your Hospital" 
