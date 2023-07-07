@@ -41,8 +41,8 @@ const Button :React.FC<ButtonProps> = ({
 
 
 
-   ${outline?'bg-white':'bg-blue-700'}
-   ${outline?'border-black':'border-blue-700'}
+   ${outline?'bg-white':'bg-[#305cad]'}
+   ${outline?'border-black':'border-[#305cad]'}
    ${outline?'text-black':'text-white'}
    ${outline?'text-black':'text-white'}
    ${small?'py-1':'py-3'}

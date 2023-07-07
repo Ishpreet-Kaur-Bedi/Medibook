@@ -70,9 +70,7 @@ const RentModal = () => {
   const bedCount = watch('bedCount');
   const imageSrc = watch('imageSrc');
 
-  const Map = useMemo(() => dynamic(() => import('../Map'), { 
-    ssr: false 
-  }), [location]);
+  
 
 
   const setCustomValue = (id: string, value: any) => {
@@ -107,7 +105,7 @@ const RentModal = () => {
  
     axios.post('/api/listings', data)
     .then(() => {
-      toast.success('Listing created!');
+      toast.success(' Hospital created!');
       router.refresh();
       reset();
       setStep(STEPS.CATEGORY)
@@ -183,7 +181,6 @@ const RentModal = () => {
           onChange={(value) => setCustomValue('location', value)} 
         />
 
-        <Map center={location?.latlng} />
       </div>
     );
   }

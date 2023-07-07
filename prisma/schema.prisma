@@ -89,7 +89,7 @@ model Listing{
 model Reservation{
    id             String    @id @default(auto()) @map("_id") @db.ObjectId
    userId String@db.ObjectId
-   listingID String@db.ObjectId   @unique
+   listingID String@db.ObjectId  
   //  startDate DateTime==>
   startDate DateTime
   endDate DateTime

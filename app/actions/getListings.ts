@@ -6,7 +6,6 @@ export interface IListingsParams{
     userId?:string;
     patientCount?:number;
     bedCount?:number;
-
     startDate?:string;
     address?:string;
     endDate?:string;
@@ -24,7 +23,6 @@ const{
 userId,
 patientCount,
 bedCount,
-
 locationValue,
 startDate,
 category,
@@ -56,7 +54,7 @@ if(patientCount){
 }
 
 if(locationValue){
-    query.locationValue=location;
+    query.locationValue=locationValue;
 }
 
 

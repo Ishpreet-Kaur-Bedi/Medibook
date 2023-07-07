@@ -1,42 +1,36 @@
 import { NextResponse } from "next/server";
+
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import prisma from "@/app/libs/prismadb"
+import prisma from "@/app/libs/prismadb";
 
-
-interface IParams{
-    reservationID?:string
-};
+interface IParams {
+  reservationId?: string;
+}
 
 export async function DELETE(
-    request:Request,
-    {params} :{params:IParams}
-){
+  request: Request,
+  { params }: { params: IParams }
+) {
+  const currentUser = await getCurrentUser();
 
-    const currentUser = await getCurrentUser();
-    if(!currentUser){
-        return NextResponse.error();
-    }
-    const {reservationID} = params;
+  if (!currentUser) {
+    return NextResponse.error();
+  }
 
+  const { reservationId } = params;
+  console.log("reservation ID:", reservationId);
+  console.log("params:", params);
 
+  if (!reservationId || typeof reservationId !== "string") {
+    throw new Error("Invalid ID");
+  }
 
-    if(!reservationID || typeof reservationID!=='string'){
-        throw new Error('Invalid ID')
-    }
+  const reservation = await prisma.reservation.deleteMany({
+    where: {
+      id: reservationId,
+      OR: [{ userId: currentUser.id }, { listing: { userId: currentUser.id } }],
+    },
+  });
 
-// a person can only delete the reservation either if he is the creater of the reservaiton or the creater of the listing that the reservation is on ie owner of the house can delete the reservation
-    const reservation = await prisma.reservation.deleteMany({
-        where:{
-            id:reservationID,
-            OR:[
-                {
-                    userId:currentUser.id
-                },
-                {
-                    listing:{userId:currentUser.id}
-
-                }
-            ]
-        }
-    })
+  return NextResponse.json(reservation);
 }

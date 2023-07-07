@@ -47,7 +47,7 @@ type= {type}
 className={`
 peer
 w-full
-p-3
+p-5
 
 font-light
 bg-white
@@ -59,8 +59,8 @@ transition
 disabled:opacity-70
 disabled:cursor-not-allowed
 ${formatPrice ?'pl-9':'pl-4'}
-${errors[id] ?'border-blue-500':'border-neutral-300'}
-${errors[id] ?'focus:border-blue-500':'focus:border-black'}
+${errors[id] ?'border-[1799dc]':'border-neutral-300'}
+${errors[id] ?'focus:border-[1799dc]':'focus:border-black'}
 
 
 
@@ -83,7 +83,7 @@ peer-placeholder-shown:scale-100
 peer-placeholder-shown:translate-y-0
 peer-focus:scale-75
 peer-focus:-translate-y-4
-${errors[id]?'text-blue-500':'text-zinc-400'}
+${errors[id]?'text-[1799dc]':'text-zinc-400'}
 
 `}>
   {label}

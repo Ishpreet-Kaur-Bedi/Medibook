@@ -31,18 +31,15 @@ const SearchModal = () => {
   const [step, setStep] = useState(STEPS.LOCATION);
 
   const [location, setLocation] = useState<CountrySelectValue>();
-  const [guestCount, setGuestCount] = useState(1);
-  const [roomCount, setRoomCount] = useState(1);
-  const [bathroomCount, setBathroomCount] = useState(1);
+  const [patientCount, setPatientCount] = useState(1);
+  const [bedCount, setBedCount] = useState(1);
+  
   const [dateRange, setDateRange] = useState<Range>({
     startDate: new Date(),
     endDate: new Date(),
     key: 'selection'
   });
 
-  const Map = useMemo(() => dynamic(() => import('../Map'), { 
-    ssr: false 
-  }), [location]);
 
   const onBack = useCallback(() => {
     setStep((value) => value - 1);
@@ -66,9 +63,9 @@ const SearchModal = () => {
     const updatedQuery: any = {
       ...currentQuery,
       locationValue: location?.value,
-      guestCount,
-      roomCount,
-      bathroomCount
+      patientCount,
+      bedCount,
+     
     };
 
     if (dateRange.startDate) {
@@ -93,11 +90,11 @@ const SearchModal = () => {
     searchModal, 
     location, 
     router, 
-    guestCount, 
-    roomCount,
+    patientCount, 
+    bedCount,
     dateRange,
     onNext,
-    bathroomCount,
+  
     params
   ]);
 
@@ -120,7 +117,7 @@ const SearchModal = () => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Where do you wanna go?"
+        title="Where do you want to visit"
         subtitle="Find the perfect location!"
       />
       <CountrySelect 
@@ -129,7 +126,6 @@ const SearchModal = () => {
           setLocation(value as CountrySelectValue)} 
       />
       <hr />
-      <Map center={location?.latlng} />
     </div>
   )
 
@@ -137,8 +133,8 @@ const SearchModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="When do you plan to go?"
-          subtitle="Make sure everyone is free!"
+          title="When do you plan to visit"
+          subtitle=" Book the dates as per convinience"
         />
         <Calendar
           onChange={(value) => setDateRange(value.selection)}
@@ -156,27 +152,20 @@ const SearchModal = () => {
           subtitle="Find your perfect place!"
         />
         <Counter 
-          onChange={(value) => setGuestCount(value)}
-          value={guestCount}
-          title="Guests" 
-          subtitle="How many guests are coming?"
+          onChange={(value) => setPatientCount(value)}
+          value={patientCount}
+          title="Patients" 
+          subtitle="How many patients are there"
         />
         <hr />
         <Counter 
-          onChange={(value) => setRoomCount(value)}
-          value={roomCount}
-          title="Rooms" 
-          subtitle="How many rooms do you need?"
+          onChange={(value) => setBedCount(value)}
+          value={bedCount}
+          title="Beds" 
+          subtitle="How many beds do you need?"
         />        
         <hr />
-        <Counter 
-          onChange={(value) => {
-            setBathroomCount(value)
-          }}
-          value={bathroomCount}
-          title="Bathrooms"
-          subtitle="How many bahtrooms do you need?"
-        />
+        
       </div>
     )
   }

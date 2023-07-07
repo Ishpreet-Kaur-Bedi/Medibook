@@ -100,12 +100,10 @@ text-center
         gap-3
 
          ">
-<div className="hidden sm:block"> Add Guests
 
-</div>
 <div
 className="p-2
-bg-blue-700
+bg-[#305cad]
 rounded-full
 text-white
 

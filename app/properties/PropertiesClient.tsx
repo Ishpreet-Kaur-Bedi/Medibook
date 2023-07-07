@@ -45,7 +45,7 @@ const TripsClient: React.FC<PropertiesClientProps> = ({
   );
   return (
     <Container>
-      <Heading title="Properties" subtitle="List of your properties " />
+      <Heading title="Hospitals" subtitle="List of your hospitals " />
 
       <div
         className="mt-10
@@ -66,7 +66,7 @@ const TripsClient: React.FC<PropertiesClientProps> = ({
             actionId={listing.id}
             onAction={onCancel}
             disabled={deletingID === listing.id}
-            actionLabel=" Delete Property"
+            actionLabel=" Delete Hospital"
             currentUser={currentUser}
           />
         ))}
