@@ -17,13 +17,13 @@ const {getByValue} = useCountries();
 const locationValue = params?.get('locationValue');
 const startDate = params?.get('startDate');
 const endDate = params?.get('endDate');
-const guestCount = params?.get('guestCount');
+const patientCount = params?.get('patientCount');
 
 const locationLabel = useMemo(()=>{
   if(locationValue){
     return getByValue(locationValue as string)?.label;
   }
-  return 'Anywhere'
+  return ''
 },[getByValue,locationValue]);
 
 const durationLabel = useMemo(()=>{
@@ -36,16 +36,16 @@ if(diff==0){
 }
 return `${diff} Days`
 }
-return 'Any Week'
+return 'Search'
 
 },[startDate,endDate]);
 
-const guestLabel = useMemo(()=>{
-  if(guestCount){
-    return `${guestCount} Guests`
+const patientLabel = useMemo(()=>{
+  if(patientCount){
+    return `${patientCount} Patients`
   }
-  return 'Add Guests';
-},[guestCount])
+  return 'Add Patients';
+},[patientCount])
   return (
     <div
     onClick={searchModal.onOpen}
@@ -103,7 +103,7 @@ text-center
 
 <div
 className="p-2
-bg-[#305cad]
+bg-gray-900
 rounded-full
 text-white
 

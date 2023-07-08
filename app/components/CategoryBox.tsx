@@ -61,8 +61,8 @@ router.push(url);
     hover:text-[#304cad]
     transition
     cursor-pointer
-${selected?'border-[#305cad]':'border-transparent'}
-${selected?'text-[#305cad]':'text-black'}
+${selected?'border-gray-900':'border-transparent'}
+${selected?'text-gray-900':'text-black'}
 
 `}
     >

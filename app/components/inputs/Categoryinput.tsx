@@ -25,10 +25,10 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         flex
         flex-col
         gap-3
-        hover:border-[#305cad]
+        hover:border-gray-900
         transition
         cursor-pointer
-        ${selected ? 'border-[#305cad]' : 'border-neutral-200'}
+        ${selected ? 'border-gray-900' : 'border-neutral-200'}
       `}
     >
       <Icon size={30} />

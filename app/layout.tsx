@@ -13,11 +13,12 @@ import LoginModal from './components/modals/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
 import RentModal from './components/modals/RentModal'
 import SearchModal from './components/modals/SearchModal'
+import Footer from './components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Medibook|Unlock Quality Healthcare, Book Your Hospital Today!',
+  title: 'Medibook | Unlock Quality Healthcare, Book Your Hospital Today!',
   description: 'Unlock Quality Healthcare, Book Your Hospital Today!',
 }
 
@@ -46,10 +47,10 @@ const currentUser = await getCurrentUser();
       {/* we have to use the current user which we got into out server component and we will pass it to the Navbar */}
   
       <Navbar  currentUser = {currentUser}/>
-     
+    
       </ClientOnly>
-      
-       <div className='pb-20 pt-28'>
+      <hr />
+       <div className='pt-28'>
        {children}
        </div>
 

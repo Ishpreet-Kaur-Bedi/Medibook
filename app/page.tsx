@@ -5,6 +5,7 @@ import EmptyState from "@/app/components/EmptyState";
 import getListings, { IListingsParams } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
+import Footer from "./components/Footer";
 
 interface HomeProps {
   searchParams: IListingsParams;
@@ -36,6 +37,8 @@ const Home = async ({ searchParams }: HomeProps) => {
             xl:grid-cols-5
             2xl:grid-cols-6
             gap-8
+            my-10px
+            py-10px
           "
         >
           {listings.map((listing: any) => (
@@ -45,8 +48,11 @@ const Home = async ({ searchParams }: HomeProps) => {
               data={listing}
             />
           ))}
+          <hr />
         </div>
+       
       </Container>
+      <Footer/>
     </ClientOnly>
   );
 };
