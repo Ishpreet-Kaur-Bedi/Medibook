@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Footer: React.FC = () => {
   return (
-    <div className="bg-gray-900">
+    <div className="bg-gray-900 mt-8">
       <div className="max-w-2xl mx-auto text-white py-10">
         <div className="text-center">
           <h3 className="text-3xl mb-3">Revolutionizing Healthcare Access and Efficiency</h3>

@@ -10,6 +10,7 @@ import { SafeReservation, SafeUser } from "@/app/types"
 import Heading from "@/app/components/Heading";
 import Container from "@/app/components/Container";
 import ListingCard from "@/app/components/listings/ListingCard";
+import Footer from "../components/Footer";
 
 interface ReservationsClientProps {
   reservations: SafeReservation[],
@@ -40,10 +41,11 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   }, [router]);
 
   return (
-    <Container>
+  <div>
+      <Container>
       <Heading
         title="Reservations"
-        subtitle="Bookings on your properties"
+        subtitle="Bookings on your Hospitals"
       />
       <div 
         className="
@@ -66,12 +68,14 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             actionId={reservation.id}
             onAction={onCancel}
             disabled={deletingID === reservation.id}
-            actionLabel="Cancel guest reservation"
+            actionLabel="Cancel patient reservation"
             currentUser={currentUser}
           />
         ))}
       </div>
     </Container>
+    <Footer/>
+    </div>
    );
 }
  

@@ -54,8 +54,9 @@ const currentUser = await getCurrentUser();
        {children}
        </div>
 
-
+       <Footer/>
         </body>
+    
     </html>
   )
 }

@@ -117,8 +117,8 @@ const SearchModal = () => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Where do you want to visit"
-        subtitle="Find the perfect location!"
+        title="Find the nearest hospital"
+        subtitle=" "
       />
       <CountrySelect 
         value={location} 
@@ -149,7 +149,7 @@ const SearchModal = () => {
       <div className="flex flex-col gap-8">
         <Heading
           title="More information"
-          subtitle="Find your perfect place!"
+          subtitle="Find the cure to your disease"
         />
         <Counter 
           onChange={(value) => setPatientCount(value)}

@@ -1,7 +1,7 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 // This line imports the PrismaAdapter from the @next-auth/prisma-adapter package. The PrismaAdapter is used to integrate NextAuth with Prisma for session management and user authentication.
 
-import  NextAuth, { AuthOptions } from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 // This line imports the NextAuth function and the AuthOptions interface from the next-auth package. NextAuth is the main function used to configure and initialize the NextAuth authentication system.
 import GithubProvider from "next-auth/providers/github";
 // This line imports the GithubProvider from the next-auth/providers/github package. It provides the GitHub OAuth authentication provider for NextAuth.
@@ -34,14 +34,15 @@ export const authOptions: AuthOptions = {
 
       // these will be the credentials given by the user
 
-      async authorize(credentials) {
+      async authorize(credentials)
+       {
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Oops! The Email and password does not match..");
         }
 
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email
+            email: credentials.email,
           },
         });
 
@@ -49,38 +50,36 @@ export const authOptions: AuthOptions = {
         if (!user || !user?.hashedPassword) {
           throw new Error("Invalid credentials");
         }
-const isCorrectPassword = await bcrypt.compare(
-  credentials.password
-  ,
-  user.hashedPassword
-);
+        const isCorrectPassword = await bcrypt.compare(
+          credentials.password,
+          user.hashedPassword
+        );
 
-//if password doesnot match with the hashed password of the database
+        //if password doesnot match with the hashed password of the database
 
-if(!isCorrectPassword){
-  throw new Error("Invalid  Credentials")
-}
+        if (!isCorrectPassword) {
+          throw new Error("Invalid  Credentials");
+        }
 
- return user;
-     }
-    })
+        return user;
+      },
+    }),
   ],
-//if any error happens in the credentials it redirects to tha slash page
+  //if any error happens in the credentials it redirects to tha slash page
 
-  pages:{
-    signIn:'/',
+  pages: {
+    signIn: "/",
   },
 
   //this will help you to see the error else you would not be able to see them
 
-  debug:process.env.NODE_ENV =="development",
-  session:{
-    strategy:'jwt'
+  debug: process.env.NODE_ENV === "development",
+  session: {
+    strategy: "jwt",
   },
-  secret:process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
 };
 export default NextAuth(authOptions)
-
 
 
 

@@ -9,6 +9,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { error } from "console";
 import ListingCard from "../components/listings/ListingCard";
+import Footer from "../components/Footer";
 interface PropertiesClientProps {
   listings: SafeListing[];
   currentUser?: SafeUser | null;
@@ -44,7 +45,8 @@ const TripsClient: React.FC<PropertiesClientProps> = ({
     [router]
   );
   return (
-    <Container>
+    <div>
+      <Container>
       <Heading title="Hospitals" subtitle="Discover our extensive collection of top-notch hospitals, where exceptional care meets architectural brilliance." />
 
       <div
@@ -71,7 +73,10 @@ const TripsClient: React.FC<PropertiesClientProps> = ({
           />
         ))}
       </div>
+      
     </Container>
+   
+    </div>
   );
 };
 

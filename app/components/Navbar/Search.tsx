@@ -23,7 +23,7 @@ const locationLabel = useMemo(()=>{
   if(locationValue){
     return getByValue(locationValue as string)?.label;
   }
-  return ''
+  return 'Location'
 },[getByValue,locationValue]);
 
 const durationLabel = useMemo(()=>{
@@ -103,7 +103,7 @@ text-center
 
 <div
 className="p-2
-bg-gray-900
+bg-[#305cad]
 rounded-full
 text-white
 

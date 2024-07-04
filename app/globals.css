@@ -40,7 +40,22 @@ z-index:0 !important;
     font-size: 16px !important;
     width:100% !important;
 }
-
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #305cad;
+}
 
 
 
